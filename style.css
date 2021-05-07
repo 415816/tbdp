@@ -1,0 +1,130 @@
+.{
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    background-color: #efefef;
+}
+
+div{/* 
+    border: 1px solid black;
+ */
+    margin: 10px;
+}
+
+.bilet{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    /* background-color: honeydew; */
+}
+
+h4{
+    margin: 0;
+}
+
+.leftHalf{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.generate, .result, .cheets, .clos{
+    border-radius: 5px;
+    min-height: 25px;
+    min-width: 170px;
+    margin: auto;
+    margin-top: 25px;
+    font-size: 28px;
+    background-color: #5781e1;
+    color: #fff;
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out, border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    padding: 10px;
+    font-weight: bold;
+}
+.result, .cheets{
+    margin-left: 15px;
+    margin-top: 0px;
+}
+
+.generate:hover, .result:hover, .cheets:hover, .clos:hover{
+    cursor: pointer;
+    background-color: #1f318e !important;
+    color: #ffffff !important;
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out, border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+
+INPUT[type="text"] {
+    width: 500px;
+}
+
+div div div {
+    background-color: #ffffff;
+    margin: 15px;
+    padding: 15px;
+}
+
+.FIO, .pas{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.FIO label input{
+    margin-top: 15px;
+    width: 350px;
+}
+
+.FIO label{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.block{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: -10px;
+    top: -10px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.mess{
+    margin: 300px auto;
+    padding: 20px;
+    width: 50%;
+    z-index: 1500;
+    background-color: #efefef;
+    text-align: center;
+    font-size: 30px;
+
+}
+
+.cler{
+    clear: both;
+    margin: 0;
+    padding: 0;
+    height: 0;
+    width: 0;
+}
+
+.footter{
+    text-align: center;
+}
+
+#r{
+    float: right;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
