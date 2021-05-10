@@ -20,6 +20,8 @@
     let q412;
     let q13;
     let q14;
+
+    // массивы данных для расчета правильных ответов на 10-ый вопрос
     let qt = [
         [0.0000035,     0,          0.00000332, 0,          0.0000015,  0,          0.00000745, 0,          0.0000029,  0         ],
         [0.0000078,     0.0000025,  0.0000021,  0.0000042,  0,          0.0000083,  0.0000049,  0.0000036,  0,          0         ],
@@ -45,6 +47,7 @@
         [0.008, 0.027,  0.014,  0.017,  0.028,  0.007,  0.012,  0.022,  0.022,  0.013]
     ];
 
+    //массивы данных для расчета правильных ответов на 11 вопрос
     let lambda1 = [6.71,	3.18,	1.16,	3.72,	4.25,	0.82,	4.74,	0.70,	8.40,	0.59];
     let lambda2 = [0.0000246,	0.0000825,	0.0000279,	0.0000481,	0.0000149,	0.0000874,	0.0000287,	0.0000772,	0.0000976,	0.0000492];
     let Tu =      [0.028,	0.091,	0.036,	0.071,	0.032,	0.066,	0.084,	0.030,	0.016,	0.046];
@@ -61,24 +64,24 @@
     let tauAO;
     let UrRisk;
     
-    let FIO = document.querySelector('.inp0');
-    let block = document.querySelector('.block');
-    let mess = document.querySelector('.mess');
-    let tex = document.querySelector('.tex');
-    let ball;
+    let FIO = document.querySelector('.inp0');          // получаем поле ввода ФИО
+    let block = document.querySelector('.block');       // получаем сервый фон при всплывающем сообщении
+    let mess = document.querySelector('.mess');         // получаем всплывающее сообщение
+    let tex = document.querySelector('.tex');           // получаем поле вывода текста в всплывающем сообщении
+    let ball;                                           // переменная в которую складывается полученный балл за правильные ответы
     
-    let passClos = document.querySelector('.passClos');
-    let passAnsw = document.querySelector('.passAnsw');
+    let passClos = document.querySelector('.passClos'); // получаем поле ввода пароля для закрытия всплывающего сообщения
+    let passAnsw = document.querySelector('.passAnsw'); // получаем поле ввода пароля для открытия правильных ответов
     
-    butt.onclick = formQuest;
-    result.onclick = check;
-    cheets.onclick = () => {if (passAnsw.value == 12) answers();}
-    clos.onclick = () => {if (passClos.value == 12) closMess();};
+    butt.onclick = formQuest;                           // кнопка формирования билета (заполняются спаны случайными значениями)                   
+    result.onclick = check;                             // запуск функции проверки ответов
+    cheets.onclick = () => {if (passAnsw.value == 12) answers();}   // проверка условий для показа правильных ответов
+    clos.onclick = () => {if (passClos.value == 12) closMess();};   // проверка условий для закрытия всплывающего окна
 
+    // 35-минутный таймер
     let time = 35 * 60;
     let r = document.getElementById('r');
     let tmp = time;
-    
 function formQuest() {
     setInterval(function(){
         let c = tmp--
@@ -293,11 +296,13 @@ function check() {
     
 }
 
+// закрытие всплывающего окна
 function closMess() {
     passClos.value = '';
     block.style.display = 'none';
 }
 
+// функция вывода правильных ответов
 function answers() {
     passAnsw.value = '';
     console.log('Правильные ответы: ');
