@@ -1,8 +1,12 @@
+    let startButton = document.querySelector('.startButton');       // получаем кнопку "Приступить к тесту"
     let butt = document.querySelector('.generate');                 // получаем кнопку "получить билет"
     let result = document.querySelector('.result');                 // получаем кнопку "результат"
-    let cheets = document.querySelector('.cheets');                 // получаем кнопку "показать правильные огтветы"
+    let cheets = document.querySelector('.cheets');                 // получаем кнопку "показать правильные ответы"
     let clos = document.querySelector('.clos');                     // получаем кнопку "ok" на всплывающем окне
     let score;
+
+    // закрываем приветственное окно
+    startButton.onclick = () => document.querySelector('.start').style.display = 'none';
 
     let q2;                                // переменные q будут содержать массивы данных для подстановки в вопросы
     let q3;
@@ -91,6 +95,9 @@ function formQuest() {
         if(m == 0 && s == 1) check();
         tmp != 0 || (tmp = time);
     },1000);
+    
+
+        
     
     
     
