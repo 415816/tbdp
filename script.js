@@ -229,7 +229,7 @@ function check() {
     i = s100.innerHTML[1];
     m = s101.innerHTML[54] - 1;
     
-    if (inp10.value.replace(',', '.') == (qts[j][m] * qt[i][m]).toFixed(9) && s101.innerHTML[3] == "Q") {score += 3;}
+    if (parseFloat(inp10.value.replace(',', '.')).toFixed(9) == (qts[j][m] * qt[i][m]).toFixed(9) && s101.innerHTML[3] == "Q") {score += 3;}
     /* console.log(qt[i][m]);
     console.log(qts[j][m]);
     console.log('QTSOK = ' + (qts[j][m] * qt[i][m]).toFixed(9));
