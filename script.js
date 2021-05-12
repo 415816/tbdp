@@ -5,6 +5,8 @@
     let clos = document.querySelector('.clos');                     // получаем кнопку "ok" на всплывающем окне
     let score;
 
+document.querySelector('body').oncontextmenu = () => {return false};
+
     // закрываем приветственное окно
     startButton.onclick = () => document.querySelector('.start').style.display = 'none';
 
