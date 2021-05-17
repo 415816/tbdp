@@ -3,7 +3,8 @@
     let result = document.querySelector('.result');                 // получаем кнопку "результат"
     let cheets = document.querySelector('.cheets');                 // получаем кнопку "показать правильные ответы"
     let clos = document.querySelector('.clos');                     // получаем кнопку "ok" на всплывающем окне
-    let score;
+    let score;                                                      // счетчик набранных баллов
+    let trueAns = document.querySelector('.trueAns');               // аолучаем кнопку "Указать на неправильные ответы"    
 
     //отключаем действие на правую кнопку мыши
     document.querySelector('body').oncontextmenu = () => {return false};
@@ -82,8 +83,9 @@
     
     butt.onclick = formQuest;                           // кнопка формирования билета (заполняются спаны случайными значениями)                   
     result.onclick = check;                             // запуск функции проверки ответов
-    cheets.onclick = () => {if (passAnsw.value == 12) answers();}   // проверка условий для показа правильных ответов
-    clos.onclick = () => {if (passClos.value == 12) closMess();};   // проверка условий для закрытия всплывающего окна
+    cheets.onclick = () => {if (passAnsw.value == 45) answers();}   // проверка условий для показа правильных ответов
+    clos.onclick = () => {if (passClos.value == 12) closMess();}   // проверка условий для закрытия всплывающего окна
+    trueAns.onclick = () => {if (passAnsw.value == 78) displayTrueAnswers();}
 
     // 35-минутный таймер
     let time = 35 * 60;
@@ -97,11 +99,7 @@ function formQuest() {
         r.textContent = 'Осталось ' + m + ':' + (s.length > 1 ? '' : '0') + s;
         if(m == 0 && s == 1) check();
         tmp != 0 || (tmp = time);
-    },1000);
-    
-
-        
-    
+    },1000); 
     
     
     q2 = ['не', ''];                                // в переменных q содержатся массивы данных для подстановки в вопросы (в спаны)
@@ -167,6 +165,7 @@ function formQuest() {
     s131.innerHTML = q14[Math.floor(Math.random()*q14.length)];     // заполняем спан 2 в вопросе 13  
 }
 
+// функция проверки правильности ответов
 function check() {
     let inp1 = document.querySelector('.inp1');                     // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
     let inp2 = document.querySelectorAll('.inp2');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
@@ -366,20 +365,144 @@ function answers() {
     if (s90.innerHTML == 'увеличение периодичности проведения технической учебы') {console.log ('9. Е');}
     if (s90.innerHTML == 'увеличение периодичности технического обслуживания объектов инфраструктуры') {console.log ('9. Д');}
 
-    if (s101.innerHTML[3] == "Q") {console.log('10. Q = ' + (qts[j][m] * qt[i][m]).toFixed(9));}
-    if (s101.innerHTML[3] == "P") {console.log('10. P = ' + (1 - (qts[j][m] * qt[i][m]).toFixed(9)));}
+    if (s101.innerHTML[3] == "Q") {console.log('10. ' + 'Qt(S/F) = ' + qts[j][m] + ', Qt(F) = ' +  qt[i][m] + ', Q = ' + (qts[j][m] * qt[i][m]).toFixed(9));}
+    if (s101.innerHTML[3] == "P") {console.log('10. ' + 'Qt(S/F) = ' + qts[j][m] + ', Qt(F) = ' +  qt[i][m] + ', P = ' + (1 - (qts[j][m] * qt[i][m]).toFixed(9)));}
 
-    if (s111.innerHTML[6] == '1') {console.log('11. sigma = ' + sigma1);}
-    if (s111.innerHTML[6] == 'i') {console.log('11. P2 = ' + P2);}
-    if (s111.innerHTML[6] == 'A') {console.log('11. tauAO = ' + tauAO);}
+    if (s111.innerHTML[6] == '1') {console.log('11. ' + 'lambda1 = ' + lambda1[z] + ', Tu = ' + Tu[c] + ', lambda2 = ' + lambda2[z] + ', mu2 = ' + mu2[z] +  ', sigma = ' + sigma1);}
+    if (s111.innerHTML[6] == 'i') {console.log('11. ' + 'lambda2 = ' + lambda2[z] + ', mu2 = ' + mu2[z] + ', P2 = ' + P2);}
+    if (s111.innerHTML[6] == 'A') {console.log('11. ' + 'Tu = ' + Tu[c] + ', k = ' + k[c] + ', mu2 = ' + mu2[z] + ', tauAO = ' + tauAO);}
 
     console.log('12. ' + UrRisk);
     
-    if ( s131.innerHTML == 'происходит безопасная эксплуатация объекта инфраструктуры') {console.log('13. А');}
+    if (s131.innerHTML == 'происходит безопасная эксплуатация объекта инфраструктуры') {console.log('13. А');}
     if (s131.innerHTML == 'возникает опасный отказ, но его устраняют до момента использования ОИ') {console.log('13. Г');}
     if (s131.innerHTML == 'возникает опасный отказ в процессе использования ОИ') {console.log('13. В');}
     if (s131.innerHTML == 'возникает опасный отказ и его не успевают устранить') {console.log('13. Б или Д');}
     if (s131.innerHTML == 'процесс движения поезда постоянно находился в опасном состоянии') {console.log('13. Д');}
     if (s131.innerHTML == 'произошел опасный отказ, но поражающие факторы не возникли') {console.log('13. Г');}
     
+}
+
+// функция выделения правильных ответов
+function displayTrueAnswers(){
+    passAnsw.value = '';
+
+    let inp1 = document.querySelector('.inp1');                     // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp2 = document.querySelectorAll('.inp2');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp3 = document.querySelectorAll('.inp3');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp4 = document.querySelectorAll('.inp4');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp5 = document.querySelectorAll('.inp5');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp6 = document.querySelectorAll('.inp6');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp7 = document.querySelector('.inp7');                     // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp8 = document.querySelectorAll('.inp8');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp9 = document.querySelectorAll('.inp9');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp10 = document.querySelector('.inp10');                   // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp11 = document.querySelector('.inp11');                   // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp12 = document.querySelector('.inp12');                    // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+    let inp13 = document.querySelector('.inp13');                    // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
+
+    // проверка правильности ответа на первый вопрос:
+    if (inp1.value.toUpperCase() == 'КООРДИНАТА' || inp1.value.toUpperCase() == 'МЕСТОПОЛОЖЕНИЕ') {document.querySelector('.qu1').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на второй вопрос:
+    if (s20.innerHTML == 'не' && inp2[0].checked && inp2[1].checked == false && inp2[2].checked == false && inp2[3].checked == false) {document.querySelector('.qu2').classList.toggle('trueAnswer');}
+    if (s20.innerHTML == '' && inp2[0].checked == false && inp2[1].checked && inp2[2].checked && inp2[3].checked) {document.querySelector('.qu2').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на третий вопрос:
+    if (s30.innerHTML == 'не' && inp3[0].checked == false && inp3[1].checked && inp3[2].checked == false && inp3[3].checked && inp3[4].checked && inp3[5].checked == false && inp3[6].checked == false && inp3[7].checked) {document.querySelector('.qu3').classList.toggle('trueAnswer');}
+    if (s30.innerHTML == '' && inp3[0].checked && inp3[1].checked == false && inp3[2].checked && inp3[3].checked == false && inp3[4].checked == false && inp3[5].checked && inp3[6].checked  && inp3[7].checked== false) {document.querySelector('.qu3').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на четвертый вопрос:
+    if (s40.innerHTML == 'нештатных неопасных' && inp4[0].checked == false && inp4[1].checked == false && inp4[2].checked && inp4[3].checked && inp4[4].checked == false) {document.querySelector('.qu4').classList.toggle('trueAnswer');}
+    if (s40.innerHTML == 'работоспособных' && inp4[0].checked == false && inp4[1].checked && inp4[2].checked == false && inp4[3].checked == false && inp4[4].checked == false) {document.querySelector('.qu4').classList.toggle('trueAnswer');}
+    if (s40.innerHTML == 'опасных' && inp4[0].checked && inp4[1].checked == false && inp4[2].checked == false && inp4[3].checked == false && inp4[4].checked == false) {document.querySelector('.qu4').classList.toggle('trueAnswer');}
+    if (s40.innerHTML == 'неработоспособных' && inp4[0].checked && inp4[1].checked == false && inp4[2].checked == false && inp4[3].checked == false && inp4[4].checked) {document.querySelector('.qu4').classList.toggle('trueAnswer');}
+    if (s40.innerHTML == 'нештатных' && inp4[0].checked && inp4[1].checked == false && inp4[2].checked == false && inp4[3].checked == false && inp4[4].checked) {document.querySelector('.qu4').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на пятый вопрос:
+    if (s50.innerHTML == 'опасного' && inp5[0].checked == false && inp5[1].checked == false && inp5[2].checked == false && inp5[3].checked == false && inp5[4].checked == false) {document.querySelector('.qu5').classList.toggle('trueAnswer');}
+    if (s50.innerHTML == 'опасного' && inp5[0].checked == false && inp5[1].checked == false && inp5[2].checked == false && inp5[3].checked && inp5[4].checked == false) {document.querySelector('.qu5').classList.toggle('trueAnswer');}
+    if (s50.innerHTML == 'штатного' && inp5[0].checked && inp5[1].checked == false && inp5[2].checked == false && inp5[3].checked && inp5[4].checked == false) {document.querySelector('.qu5').classList.toggle('trueAnswer');}
+    if (s50.innerHTML == 'защищенного' && inp5[0].checked == false && inp5[1].checked == false && inp5[2].checked && inp5[3].checked == false && inp5[4].checked == false) {document.querySelector('.qu5').classList.toggle('trueAnswer');}
+    if (s50.innerHTML == 'незащищенного' && inp5[0].checked == false && inp5[1].checked == false && inp5[2].checked && inp5[3].checked && inp5[4].checked == false) {document.querySelector('.qu5').classList.toggle('trueAnswer');}
+    if (s50.innerHTML == 'нештатного неопасного' && inp5[0].checked == false && inp5[1].checked == false && inp5[2].checked && inp5[3].checked && inp5[4].checked == false) {document.querySelector('.qu5').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на шестой вопрос:
+    if (s60.innerHTML == 'не' && s61.innerHTML == 'поражающим' && inp6[0].checked && inp6[1].checked == false && inp6[2].checked == false && inp6[3].checked == false && inp6[4].checked && inp6[5].checked == false && inp6[6].checked == false && inp6[7].checked == false && inp6[8].checked && inp6[9].checked && inp6[10].checked && inp6[11].checked && inp6[12].checked == false && inp6[13].checked == false && inp6[14].checked == false ){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    if (s60.innerHTML == 'не' && s61.innerHTML == 'первичным поражающим' && inp6[0].checked && inp6[1].checked == false && inp6[2].checked && inp6[3].checked && inp6[4].checked && inp6[5].checked && inp6[6].checked && inp6[7].checked == false && inp6[8].checked && inp6[9].checked && inp6[10].checked && inp6[11].checked && inp6[12].checked == false && inp6[13].checked && inp6[14].checked){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    if (s60.innerHTML == 'не' && s61.innerHTML == 'вторичным поражающим' && inp6[0].checked && inp6[1].checked && inp6[2].checked == false && inp6[3].checked == false && inp6[4].checked && inp6[5].checked == false && inp6[6].checked == false && inp6[7].checked && inp6[8].checked && inp6[9].checked && inp6[10].checked && inp6[11].checked && inp6[12].checked && inp6[13].checked == false && inp6[14].checked == false){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    if (s60.innerHTML == 'не' && s61.innerHTML == 'дестабилизирующим' && inp6[0].checked == false && inp6[1].checked && inp6[2].checked && inp6[3].checked && inp6[4].checked == false && inp6[5].checked && inp6[6].checked && inp6[7].checked && inp6[8].checked == false && inp6[9].checked == false && inp6[10].checked == false && inp6[11].checked == false && inp6[12].checked && inp6[13].checked && inp6[14].checked){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    if (s60.innerHTML == ''   && s61.innerHTML == 'поражающим'  && inp6[0].checked == false && inp6[1].checked && inp6[2].checked && inp6[3].checked && inp6[4].checked == false && inp6[5].checked && inp6[6].checked && inp6[7].checked && inp6[8].checked == false && inp6[9].checked == false && inp6[10].checked == false && inp6[11].checked == false && inp6[12].checked && inp6[13].checked && inp6[14].checked){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    if (s60.innerHTML == ''   && s61.innerHTML == 'первичным поражающим' && inp6[0].checked == false && inp6[1].checked && inp6[2].checked == false && inp6[3].checked == false && inp6[4].checked == false && inp6[5].checked == false && inp6[6].checked == false && inp6[7].checked && inp6[8].checked == false && inp6[9].checked == false && inp6[10].checked == false && inp6[11].checked == false && inp6[12].checked && inp6[13].checked == false && inp6[14].checked == false){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    if (s60.innerHTML == ''   && s61.innerHTML == 'вторичным поражающим' && inp6[0].checked == false && inp6[1].checked == false && inp6[2].checked && inp6[3].checked && inp6[4].checked == false && inp6[5].checked && inp6[6].checked && inp6[7].checked == false && inp6[8].checked == false && inp6[9].checked == false && inp6[10].checked == false && inp6[11].checked == false && inp6[12].checked == false && inp6[13].checked && inp6[14].checked){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    if (s60.innerHTML == ''   && s61.innerHTML == 'дестабилизирующим' && inp6[0].checked && inp6[1].checked == false && inp6[2].checked == false && inp6[3].checked == false && inp6[4].checked && inp6[5].checked == false && inp6[6].checked == false && inp6[7].checked == false && inp6[8].checked && inp6[9].checked && inp6[10].checked && inp6[11].checked && inp6[12].checked == false && inp6[13].checked == false && inp6[14].checked == false ){document.querySelector('.qu6').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на седьмой вопрос:
+    if ((s70.innerHTML == 'небольшому повреждению технической системы') && ((inp7.value == 'незначительный') || (inp7.value == 'Незначительный'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
+    if ((s70.innerHTML == 'незначительным травмам') && ((inp7.value == 'незначительный') || (inp7.value == 'Незначительный'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
+    if ((s70.innerHTML == 'тяжелому повреждению системы') && ((inp7.value == 'несущественный') || (inp7.value == 'Несущественный'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
+    if ((s70.innerHTML == 'небольшим травмам') && ((inp7.value == 'несущественный') || (inp7.value == 'Несущественный'))) {document.querySelector('.7').classList.toggle('trueAnswer');}
+    if ((s70.innerHTML == 'значительному ущербу для окружающей среды') && (inp7.value == ('критический' || 'Критический'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
+    if ((s70.innerHTML == 'полной потере технической системы') && ((inp7.value == 'критический') || (inp7.value == 'Критический'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
+    if ((s70.innerHTML == 'многочисленным пострадавшим') && ((inp7.value == 'катастрофический') || (inp7.value == 'Катастрофический'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на восьмой вопрос:
+    if (s80.innerHTML == 'имитационном моделировании'   && inp8[0].checked          && inp8[1].checked == false && inp8[2].checked) {document.querySelector('.qu8').classList.toggle('trueAnswer');}
+    if (s80.innerHTML == 'статистической информации'    && inp8[0].checked == false && inp8[1].checked          && inp8[2].checked) {document.querySelector('.qu8').classList.toggle('trueAnswer');}
+    if (s80.innerHTML == 'экспертной оценке'            && inp8[0].checked          && inp8[1].checked == false && inp8[2].checked) {document.querySelector('.qu8').classList.toggle('trueAnswer');}
+    if (s80.innerHTML == 'всей имеющейся информации'    && inp8[0].checked == false && inp8[1].checked == false && inp8[2].checked) {document.querySelector('.qu8').classList.toggle('trueAnswer');}
+    if (s80.innerHTML == 'математическом моделировании' && inp8[0].checked          && inp8[1].checked == false && inp8[2].checked) {document.querySelector('.qu8').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на девятый вопрос:
+    if (s90.innerHTML == 'перевод объекта инфраструктуры в защищенное состояние' && inp9[0].checked && inp9[1].checked == false && inp9[2].checked == false && inp9[3].checked == false && inp9[4].checked == false && inp9[5].checked == false) {document.querySelector('.qu9').classList.toggle('trueAnswer');}
+    if (s90.innerHTML == 'факт присутствия помощника машиниста в кабине локомотива' && inp9[0].checked == false && inp9[1].checked == false && inp9[2].checked == false && inp9[3].checked && inp9[4].checked == false && inp9[5].checked == false) {document.querySelector('.qu9').classList.toggle('trueAnswer');}
+    if (s90.innerHTML == 'изменение структуры технического средства' && inp9[0].checked == false && inp9[1].checked == false && inp9[2].checked && inp9[3].checked == false && inp9[4].checked == false && inp9[5].checked == false) {document.querySelector('.qu9').classList.toggle('trueAnswer');}
+    if (s90.innerHTML == 'перераспределение функций между человеком и техническим средством' && inp9[0].checked == false && inp9[1].checked && inp9[2].checked == false && inp9[3].checked == false && inp9[4].checked == false && inp9[5].checked == false) {document.querySelector('.qu9').classList.toggle('trueAnswer');}
+    if (s90.innerHTML == 'увеличение периодичности проведения технической учебы' && inp9[0].checked == false && inp9[1].checked == false && inp9[2].checked == false && inp9[3].checked == false && inp9[4].checked == false && inp9[5].checked) {document.querySelector('.qu9').classList.toggle('trueAnswer');}
+    if (s90.innerHTML == 'увеличение периодичности технического обслуживания объектов инфраструктуры' && inp9[0].checked == false && inp9[1].checked == false && inp9[2].checked == false && inp9[3].checked == false && inp9[4].checked && inp9[5].checked == false) {document.querySelector('.qu9').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на деcятый вопрос:
+    j = s100.innerHTML[0];
+    i = s100.innerHTML[1];
+    m = s101.innerHTML[54] - 1;
+    
+    if (parseFloat(inp10.value.replace(',', '.')).toFixed(9) == (qts[j][m] * qt[i][m]).toFixed(9) && s101.innerHTML[3] == "Q") {document.querySelector('.qu10').classList.toggle('trueAnswer');}
+
+    if (+inp10.value.replace(',', '.') == (1 - (qts[j][m] * qt[i][m]).toFixed(9)) && s101.innerHTML[3] == "P") {document.querySelector('.qu10').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на одиннадцатый вопрос:
+    z = s110.innerHTML[0];
+    c = s110.innerHTML[1];
+    P2 = (lambda2[z]/(lambda2[z] + mu2[z])).toFixed(6);
+    sigma1 = ((lambda1[z] / (1 / Tu[c])) + (lambda2[z] / mu2[z])).toFixed(6);
+    tauAO = ((Tu[c] * (k[c] / mu2[z])) / (Tu[c] + (k[c] / mu2[z]))).toFixed(6);
+
+    if (s111.innerHTML[6] == '1' && inp11.value.replace(',', '.') == sigma1) {document.querySelector('.qu11').classList.toggle('trueAnswer');}
+    if (s111.innerHTML[6] == 'i' && inp11.value.replace(',', '.') == P2) {document.querySelector('.qu11').classList.toggle('trueAnswer');}
+    if (s111.innerHTML[6] == 'A' && inp11.value.replace(',', '.') == tauAO) {document.querySelector('.qu11').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на двенадцатый вопрос:
+    UrRisk = '';
+    if (s120.innerHTML == 'безопасности') {
+        if (+s121.innerHTML[13] >= 7) {UrRisk += 'М';}
+        else if (+s121.innerHTML[13] >= 5) {UrRisk += 'К';}
+            else if (+s121.innerHTML[13] >= 3) {UrRisk += 'Р';}
+                else if (+s121.innerHTML[13] >= 1) {UrRisk += 'С';}
+                    else if (+s121.innerHTML[13] >= 0) {UrRisk += 'В';}
+                        else if (+s121.innerHTML[13] <= 1) {UrRisk += 'Ч';}
+        if (s123.innerHTML == 'незначительный')   {UrRisk += 1;}
+            if (s123.innerHTML == 'серьезный')        {UrRisk += 2;}
+                if (s123.innerHTML == 'критический')      {UrRisk += 3;}
+                    if (s123.innerHTML == 'катастрофический') {UrRisk += 4;}
+    }
+    if (s120.innerHTML == 'безотказности') {
+        if (+s124.innerHTML[13] >= 7) {UrRisk += 'М';}
+        else if (+s124.innerHTML[13] >= 5) {UrRisk += 'К';}
+            else if (+s124.innerHTML[13] >= 3) {UrRisk += 'Р';}
+                else if (+s124.innerHTML[13] >= 1) {UrRisk += 'С';}
+                    else if (+s124.innerHTML[13] >= 0) {UrRisk += 'В';}
+                        else if (+s124.innerHTML[13] <= 1) {UrRisk += 'Ч';}
+        if (s122.innerHTML < 50000) {UrRisk += 1;}
+        else if (s122.innerHTML < 200000) {UrRisk += 2;}
+            else if (s122.innerHTML < 4000000) {UrRisk += 3;}
+                else if (s122.innerHTML > 4000000) {UrRisk += 4;}
+    }
+    if (inp12.value.toUpperCase() == UrRisk) {document.querySelector('.qu12').classList.toggle('trueAnswer');}
+    // проверка правильности ответа на тринадцатый вопрос:
+    if ((inp13.value == 'А' || inp13.value == 'а') && s131.innerHTML == 'происходит безопасная эксплуатация объекта инфраструктуры') {document.querySelector('.qu13').classList.toggle('trueAnswer');}
+    if ((inp13.value == 'Г' || inp13.value == 'г') && s131.innerHTML == 'возникает опасный отказ, но его устраняют до момента использования ОИ') {document.querySelector('.qu13').classList.toggle('trueAnswer');}
+    if ((inp13.value == 'В' || inp13.value == 'в') && s131.innerHTML == 'возникает опасный отказ в процессе использования ОИ') {document.querySelector('.qu13').classList.toggle('trueAnswer');}
+    if ((inp13.value == 'Б' || inp13.value == 'б' || inp13.value == 'Д' || inp13.value == 'д') && s131.innerHTML == 'возникает опасный отказ и его не успевают устранить') {document.querySelector('.qu13').classList.toggle('trueAnswer');}
+    if ((inp13.value == 'Д' || inp13.value == 'д') && s131.innerHTML == 'процесс движения поезда постоянно находился в опасном состоянии') {document.querySelector('.qu13').classList.toggle('trueAnswer');}
+    if ((inp13.value == 'Г' || inp13.value == 'г') && s131.innerHTML == 'произошел опасный отказ, но поражающие факторы не возникли') {document.querySelector('.qu13').classList.toggle('trueAnswer');}
+
 }
