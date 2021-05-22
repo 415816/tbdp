@@ -435,7 +435,7 @@ function displayTrueAnswers(){
     if ((s70.innerHTML == 'небольшому повреждению технической системы') && ((inp7.value == 'незначительный') || (inp7.value == 'Незначительный'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
     if ((s70.innerHTML == 'незначительным травмам') && ((inp7.value == 'незначительный') || (inp7.value == 'Незначительный'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
     if ((s70.innerHTML == 'тяжелому повреждению системы') && ((inp7.value == 'несущественный') || (inp7.value == 'Несущественный'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
-    if ((s70.innerHTML == 'небольшим травмам') && ((inp7.value == 'несущественный') || (inp7.value == 'Несущественный'))) {document.querySelector('.7').classList.toggle('trueAnswer');}
+    if ((s70.innerHTML == 'небольшим травмам') && ((inp7.value == 'несущественный') || (inp7.value == 'Несущественный'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
     if ((s70.innerHTML == 'значительному ущербу для окружающей среды') && (inp7.value == ('критический' || 'Критический'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
     if ((s70.innerHTML == 'полной потере технической системы') && ((inp7.value == 'критический') || (inp7.value == 'Критический'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
     if ((s70.innerHTML == 'многочисленным пострадавшим') && ((inp7.value == 'катастрофический') || (inp7.value == 'Катастрофический'))) {document.querySelector('.qu7').classList.toggle('trueAnswer');}
