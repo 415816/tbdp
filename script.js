@@ -91,7 +91,9 @@
     let time = 35 * 60;
     let r = document.getElementById('r');
     let tmp = time;
-function formQuest() {
+
+    function formQuest() {
+    
     setInterval(function(){
         let c = tmp--
         let m = (c / 60) >> 0
@@ -100,6 +102,7 @@ function formQuest() {
         if(m == 0 && s == 1) check();
         tmp != 0 || (tmp = time);
     },1000); 
+           
     
     
     q2 = ['не', ''];                                // в переменных q содержатся массивы данных для подстановки в вопросы (в спаны)
@@ -183,7 +186,7 @@ function check() {
 
     score = 0;
     // проверка правильности ответа на первый вопрос:
-    if (inp1.value == 'координата' || inp1.value == 'Координата' || inp1.value == 'координаты' || inp1.value == 'Координаты' || inp1.value == 'местоположение') {score += 1;}
+    if (inp1.value.toUpperCase() == 'КООРДИНАТА' || inp1.value.toUpperCase() == 'МЕСТОПОЛОЖЕНИЕ') {score += 1;}
     // проверка правильности ответа на второй вопрос:
     if (s20.innerHTML == 'не' && inp2[0].checked && inp2[1].checked == false && inp2[2].checked == false && inp2[3].checked == false) {score += 1;}
     if (s20.innerHTML == '' && inp2[0].checked == false && inp2[1].checked && inp2[2].checked && inp2[3].checked) {score += 1;}
@@ -213,13 +216,13 @@ function check() {
     if (s60.innerHTML == ''   && s61.innerHTML == 'вторичным поражающим' && inp6[0].checked == false && inp6[1].checked == false && inp6[2].checked && inp6[3].checked && inp6[4].checked == false && inp6[5].checked && inp6[6].checked && inp6[7].checked == false && inp6[8].checked == false && inp6[9].checked == false && inp6[10].checked == false && inp6[11].checked == false && inp6[12].checked == false && inp6[13].checked && inp6[14].checked){score += 1;}
     if (s60.innerHTML == ''   && s61.innerHTML == 'дестабилизирующим' && inp6[0].checked && inp6[1].checked == false && inp6[2].checked == false && inp6[3].checked == false && inp6[4].checked && inp6[5].checked == false && inp6[6].checked == false && inp6[7].checked == false && inp6[8].checked && inp6[9].checked && inp6[10].checked && inp6[11].checked && inp6[12].checked == false && inp6[13].checked == false && inp6[14].checked == false ){score += 1;}
     // проверка правильности ответа на седьмой вопрос:
-    if ((s70.innerHTML == 'небольшому повреждению технической системы') && ((inp7.value == 'незначительный') || (inp7.value == 'Незначительный'))) {score += 2;}
-    if ((s70.innerHTML == 'незначительным травмам') && ((inp7.value == 'незначительный') || (inp7.value == 'Незначительный'))) {score += 2;}
-    if ((s70.innerHTML == 'тяжелому повреждению системы') && ((inp7.value == 'несущественный') || (inp7.value == 'Несущественный'))) {score += 2;}
-    if ((s70.innerHTML == 'небольшим травмам') && ((inp7.value == 'несущественный') || (inp7.value == 'Несущественный'))) {score += 2;}
-    if ((s70.innerHTML == 'значительному ущербу для окружающей среды') && (inp7.value == ('критический' || 'Критический'))) {score += 2;}
-    if ((s70.innerHTML == 'полной потере технической системы') && ((inp7.value == 'критический') || (inp7.value == 'Критический'))) {score += 2;}
-    if ((s70.innerHTML == 'многочисленным пострадавшим') && ((inp7.value == 'катастрофический') || (inp7.value == 'Катастрофический'))) {score += 2;}
+    if ((s70.innerHTML == 'небольшому повреждению технической системы') && ((inp7.value.toUpperCase() == 'НЕЗНАЧИТЕЛЬНЫЙ') )) {score += 2;}
+    if ((s70.innerHTML == 'незначительным травмам') && ((inp7.value.toUpperCase() == 'НЕЗНАЧИТЕЛЬНЫЙ') )) {score += 2;}
+    if ((s70.innerHTML == 'тяжелому повреждению системы') && ((inp7.value.toUpperCase() == 'НЕСУЩЕСТВЕННЫЙ') )) {score += 2;}
+    if ((s70.innerHTML == 'небольшим травмам') && ((inp7.value.toUpperCase() == 'НЕСУЩЕСТВЕННЫЙ'))) {score += 2;}
+    if ((s70.innerHTML == 'значительному ущербу для окружающей среды') && (inp7.value.toUpperCase() == ('КРИТИЧЕСКИЙ'))) {score += 2;}
+    if ((s70.innerHTML == 'полной потере технической системы') && ((inp7.value.toUpperCase() == 'КРИТИЧЕСКИЙ'))) {score += 2;}
+    if ((s70.innerHTML == 'многочисленным пострадавшим') && ((inp7.value.toUpperCase() == 'КАТАСТРОФИЧЕСКИЙ'))) {score += 2;}
     // проверка правильности ответа на восьмой вопрос:
     if (s80.innerHTML == 'имитационном моделировании'   && inp8[0].checked          && inp8[1].checked == false && inp8[2].checked) {score += 1;}
     if (s80.innerHTML == 'статистической информации'    && inp8[0].checked == false && inp8[1].checked          && inp8[2].checked) {score += 1;}
@@ -284,13 +287,12 @@ function check() {
     }
     if (inp12.value.toUpperCase() == UrRisk) {score += 2;}
     // проверка правильности ответа на тринадцатый вопрос:
-    if ((inp13.value == 'А' || inp13.value == 'а') && s131.innerHTML == 'происходит безопасная эксплуатация объекта инфраструктуры') {score += 3;}
-    if ((inp13.value == 'Г' || inp13.value == 'г') && s131.innerHTML == 'возникает опасный отказ, но его устраняют до момента использования ОИ') {score += 3;}
-    if ((inp13.value == 'В' || inp13.value == 'в') && s131.innerHTML == 'возникает опасный отказ в процессе использования ОИ') {score += 3;}
-    if ((inp13.value == 'Б' || inp13.value == 'б' || inp13.value == 'Д' || inp13.value == 'д') && s131.innerHTML == 'возникает опасный отказ и его не успевают устранить') {score += 3;}
-    if ((inp13.value == 'Д' || inp13.value == 'д') && s131.innerHTML == 'процесс движения поезда постоянно находился в опасном состоянии') {score += 3;}
-    if ((inp13.value == 'Г' || inp13.value == 'г') && s131.innerHTML == 'произошел опасный отказ, но поражающие факторы не возникли') {score += 3;}
-    
+    if ((inp13.value.toUpperCase() == 'А') && s131.innerHTML == 'происходит безопасная эксплуатация объекта инфраструктуры') {score += 3;}
+    if ((inp13.value.toUpperCase() == 'Г') && s131.innerHTML == 'возникает опасный отказ, но его устраняют до момента использования ОИ') {score += 3;}
+    if ((inp13.value.toUpperCase() == 'В') && s131.innerHTML == 'возникает опасный отказ в процессе использования ОИ') {score += 3;}
+    if ((inp13.value.toUpperCase() == 'Б' || inp13.value.toUpperCase() == 'Д') && s131.innerHTML == 'возникает опасный отказ и его не успевают устранить') {score += 3;}
+    if ((inp13.value.toUpperCase() == 'Д') && s131.innerHTML == 'процесс движения поезда постоянно находился в опасном состоянии') {score += 3;}
+    if ((inp13.value.toUpperCase() == 'Г') && s131.innerHTML == 'произошел опасный отказ, но поражающие факторы не возникли') {score += 3;}
     if (score > 18) {
         ball = 'отлично!';
     } else if (score > 14) {
