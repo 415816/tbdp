@@ -9,12 +9,15 @@
 <body>
     <div class="start">
         <div class="chooseTest">
-            <h3>Выберите испытание</h3>
-            <select name="" id="">
-                <option value="">Экзамен</option>
-                <option value="">Защита контрольных работ</option>
-            </select> <br>
-            <button class="startButton">Приступить</button>
+            <div class="FIO"><label  for="">Выберите испытание и введите свои фамилию, имя и отчество в поле ниже: <br>
+                <select name="" id="">
+                    <option value="">Экзамен</option>
+                    <option value="">Защита контрольных работ</option>
+                </select> <br>
+                <input class="inp0" name="name" placeholder="Фамилия Имя Отчество" type="text"></label>
+            <button class="generate">Получить билет</button>
+            </div>
+
         </div>
     </div>
     <div class="block">
@@ -27,11 +30,7 @@
     <span id="r"></span>
     <div class="bilet">
         <div class="leftHalf">
-            <div class="FIO"><label  for="">Введите свои фамилию, имя и отчество в поле ниже: <br>
-                <input class="inp0" name="name" placeholder="Фамилия Имя Отчество" type="text"></label>
-                <div class="cler"></div>
-            <button class="generate">Получить билет</button>
-            </div>
+            
             <div class="qu1"><h4>Вопрос 1</h4> Укажите, какой параметр пассажиров и грузов изменяется при нормальном течении перевозочного процесса. <br>  
                 <input class="inp1" placeholder="Одно слово в единственном числе, в именительном падеже" type="text">
             </div>

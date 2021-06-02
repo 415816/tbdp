@@ -1,4 +1,4 @@
-    const startButton = document.querySelector('.startButton');       // получаем кнопку "Приступить к тесту"
+    //const startButton = document.querySelector('.startButton');       // получаем кнопку "Приступить к тесту"
     const butt = document.querySelector('.generate');                 // получаем кнопку "получить билет"
     const result = document.querySelector('.result');                 // получаем кнопку "результат"
     const cheets = document.querySelector('.cheets');                 // получаем кнопку "показать правильные ответы"
@@ -10,7 +10,7 @@
     document.querySelector('body').oncontextmenu = () => {return false};
 
     // закрываем приветственное окно
-    startButton.onclick = () => document.querySelector('.start').style.display = 'none';
+    //startButton.onclick = () => document.querySelector('.start').style.display = 'none';
 
     let q2;                                // переменные q будут содержать массивы данных для подстановки в вопросы
     let q3;
@@ -81,7 +81,12 @@
     let passClos = document.querySelector('.passClos'); // получаем поле ввода пароля для закрытия всплывающего сообщения
     let passAnsw = document.querySelector('.passAnsw'); // получаем поле ввода пароля для открытия правильных ответов
     
-    butt.onclick = formQuest;                           // кнопка формирования билета (заполняются спаны случайными значениями)                   
+    butt.onclick = () => {
+      if (FIO.value != 0) {
+        document.querySelector(".start").style.display = "none";
+        formQuest();
+      }
+    };                           // кнопка формирования билета (заполняются спаны случайными значениями)                   
     result.onclick = check;                             // запуск функции проверки ответов
     cheets.onclick = () => {if (passAnsw.value == 45) answers();}   // проверка условий для показа правильных ответов
     clos.onclick = () => {if (passClos.value == 12) closMess();}   // проверка условий для закрытия всплывающего окна
