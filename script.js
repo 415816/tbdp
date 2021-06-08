@@ -81,6 +81,8 @@
     let passClos = document.querySelector('.passClos'); // получаем поле ввода пароля для закрытия всплывающего сообщения
     let passAnsw = document.querySelector('.passAnsw'); // получаем поле ввода пароля для открытия правильных ответов
     
+    
+    
     butt.onclick = () => {
       if (FIO.value != 0) {
         document.querySelector(".start").style.display = "none";
