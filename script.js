@@ -81,8 +81,47 @@
     let passClos = document.querySelector('.passClos'); // получаем поле ввода пароля для закрытия всплывающего сообщения
     let passAnsw = document.querySelector('.passAnsw'); // получаем поле ввода пароля для открытия правильных ответов
     
-    
-    
+    const btnCalcStart = document.querySelector('.calcStart');
+    const calcInp = document.querySelectorAll('.calcInp');
+    const calcSumm = document.querySelector('.calcSumm');
+    const calcSubtraction = document.querySelector('.calcSubtraction');
+    const calcMultipl = document.querySelector('.calcMultipl');
+    const calcDevide = document.querySelector('.calcDevide');
+    const calculator = document.querySelector('.calculator-container');
+    const showCalculator = document.querySelector('.showCalculator');
+
+    btnCalcStart.onclick = () => {
+      calcSumm.innerHTML = parseFloat(
+        (
+          parseFloat(calcInp[0].value.replace(",", ".")) +
+          parseFloat(calcInp[1].value.replace(",", "."))
+        ).toFixed(12)
+      );
+      calcSubtraction.innerHTML = parseFloat(
+        (
+          parseFloat(calcInp[2].value.replace(",", ".")) -
+          parseFloat(calcInp[3].value.replace(",", "."))
+        ).toFixed(12)
+      );
+      calcMultipl.innerHTML = parseFloat(
+        (
+          parseFloat(calcInp[4].value.replace(",", ".")) *
+          parseFloat(calcInp[5].value.replace(",", "."))
+        ).toFixed(12)
+      );
+      calcDevide.innerHTML = parseFloat(
+        (
+          parseFloat(calcInp[6].value.replace(",", ".")) /
+          parseFloat(calcInp[7].value.replace(",", "."))
+        ).toFixed(12)
+      );
+    };
+
+    showCalculator.onclick = () => {
+        calculator.classList.toggle("non");
+    };
+
+
     butt.onclick = () => {
       if (FIO.value != 0) {
         document.querySelector(".start").style.display = "none";

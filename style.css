@@ -189,14 +189,15 @@ div div div {
 .calcDiv, .calcSumm, .calcSubtraction, .calcMultipl, .calcDevide{
     margin: 0;
     padding: 0;
-    width: 66px;
+    width: 102px;
     text-align: center;
+    font-size: 20px;
 }
 
 .calculator-container{
     align-items: center;
-    display: flex;
-    width: 395px;
+    display: none;
+    width: 560px;
     flex-wrap: wrap;
 }
 
@@ -205,6 +206,11 @@ div div div {
 }
 
 .calcInp{
-    max-width: 50px;
+    max-width: 90px;
     margin: 4px;
+    font-size: 14px;
+}
+
+.non{
+    display: flex;
 }
