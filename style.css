@@ -144,7 +144,7 @@ div div div {
 }
 
 .chooseTest{
-    margin: 300px auto;
+    margin: 150px auto;
     padding: 20px;
     width: 20%;
     z-index: 1700;
@@ -213,4 +213,14 @@ div div div {
 
 .non{
     display: flex;
+}
+
+
+textarea{
+    float: right;
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
