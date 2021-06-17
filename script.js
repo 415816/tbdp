@@ -89,7 +89,11 @@
     const calcDevide = document.querySelector('.calcDevide');
     const calculator = document.querySelector('.calculator-container');
     const showCalculator = document.querySelector('.showCalculator');
-
+    const showMU1 = document.querySelector('.showMU1');
+    const showMU2 = document.querySelector('.showMU2');
+    const MU1Container = document.querySelector('.MU1-container');
+    const MU2Container = document.querySelector('.MU2-container');
+    
     btnCalcStart.onclick = () => {
       calcSumm.innerHTML = parseFloat(
         (
@@ -120,6 +124,14 @@
     showCalculator.onclick = () => {
         calculator.classList.toggle("non");
     };
+
+    showMU1.onclick = () => {
+        MU1Container.classList.toggle("non");
+    }
+    
+    showMU2.onclick = () => {
+        MU2Container.classList.toggle("non");
+    }
 
 
     butt.onclick = () => {
