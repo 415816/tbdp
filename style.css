@@ -168,14 +168,14 @@ div div div {
 }
 
 .trueAns, .showCalculator{
-    width: 735px;
+    width: 750px;
     margin-bottom: 5px;
 }
 .btns{
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 0;
     
 }
@@ -202,7 +202,7 @@ div div div {
 }
 
 .showCalculator{
-    margin: 0 0 0 15px;
+    margin: 0;
 }
 
 .calcInp{
@@ -223,4 +223,8 @@ textarea{
     left: 20px;
     font-size: 20px;
     font-weight: bold;
+}
+
+.btnCalcContainer{
+    padding: 0;
 }
