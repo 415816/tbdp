@@ -30,10 +30,10 @@ h4{
     padding-top: 0px;
 }
 
-.generate, .result, .cheets, .clos, .startButton, .trueAns, .showCalculator{
+.generate, .result, .cheets, .clos, .startButton, .trueAns, .showCalculator, .showMU1, .showMU2{
     border-radius: 5px;
     min-height: 25px;
-    min-width: 170px;
+    min-width: 233px;
     margin: auto;
     margin-top: 25px;
     font-size: 28px;
@@ -48,7 +48,7 @@ h4{
     margin-top: 0px;
 }
 
-.generate:hover, .result:hover, .cheets:hover, .clos:hover, .startButton:hover, .trueAns:hover, .showCalculator:hover{
+.generate:hover, .result:hover, .cheets:hover, .clos:hover, .startButton:hover, .trueAns:hover, .showCalculator:hover, .showMU1:hover, .showMU2:hover{
     cursor: pointer;
     background-color: #1f318e !important;
     color: #ffffff !important;
@@ -101,7 +101,7 @@ div div div {
 }
 
 .mess{
-    margin: 300px auto;
+    margin: 100px auto;
     padding: 20px;
     width: 50%;
     z-index: 1500;
@@ -144,7 +144,7 @@ div div div {
 }
 
 .chooseTest{
-    margin: 150px auto;
+    margin: 100px auto;
     padding: 20px;
     width: 20%;
     z-index: 1700;
@@ -167,7 +167,7 @@ div div div {
     border: 6px solid rgb(100, 160, 255);
 }
 
-.trueAns, .showCalculator{
+.trueAns{
     width: 750px;
     margin-bottom: 5px;
 }
@@ -201,7 +201,7 @@ div div div {
     flex-wrap: wrap;
 }
 
-.showCalculator{
+.showCalculator, .showMU1, .showMU2{
     margin: 0;
 }
 
@@ -226,5 +226,25 @@ textarea{
 }
 
 .btnCalcContainer{
+    display: flex;
+    flex-wrap: wrap;
     padding: 0;
+    justify-content: space-between;
+    margin-top: 0;
 }
+
+.MU1 img, .MU2 img {
+    width: 750px;
+    padding: 0;
+    margin: 0;
+}
+.MU1-container,.MU2-container{
+    padding: 0;
+    display: none;
+}
+
+.MU1, .MU2{
+    padding: 0;
+    margin: 0;
+    width: 25px;
+} 
