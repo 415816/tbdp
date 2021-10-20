@@ -141,12 +141,12 @@
       }
     };                           // кнопка формирования билета (заполняются спаны случайными значениями)                   
     result.onclick = check;                             // запуск функции проверки ответов
-    cheets.onclick = () => {if (passAnsw.value == 45) answers();}   // проверка условий для показа правильных ответов
-    clos.onclick = () => {if (passClos.value == 12) closMess();}   // проверка условий для закрытия всплывающего окна
-    trueAns.onclick = () => {if (passAnsw.value == 78) displayTrueAnswers();}
+    cheets.onclick = () => {if (passAnsw.value == 46) answers();}   // проверка условий для показа правильных ответов
+    clos.onclick = () => {if (passClos.value == 46) closMess();}   // проверка условий для закрытия всплывающего окна
+    trueAns.onclick = () => {if (passAnsw.value == 46) displayTrueAnswers();}
 
-    // 35-минутный таймер
-    let time = 35 * 60;
+    // 30-минутный таймер
+    let time = 30 * 60;
     let r = document.getElementById('r');
     let tmp = time;
 
@@ -220,8 +220,6 @@
     s123.innerHTML = q312[Math.floor(Math.random()*q312.length)];   // заполняем спан 4 в вопросе 12
     let s124 = document.querySelector('#s124');
     s124.innerHTML = q412[Math.floor(Math.random()*q412.length)];   // заполняем спан 5 в вопросе 12
-    //let s130 = document.querySelector('#s130');
-    //s130.innerHTML = q13[Math.floor(Math.random()*q13.length)];     // заполняем спан 1 в вопросе 13
     let s131 = document.querySelector('#s131');
     s131.innerHTML = q14[Math.floor(Math.random()*q14.length)];     // заполняем спан 2 в вопросе 13  
 }
@@ -358,7 +356,7 @@ function check() {
     }   else if (score >= 11) {
         ball = '"удовлетворительно". Оценка может быть выставлена в ведомость и зачетную книжку лишь при сданных контрольных работах (получено сообщение "к защите")';
     }   else {ball = '"неудовлетворительно". Пересдача по вторникам, время и аудиторию Вы можете уточнить на стенде у 307 аудитории либо в группе ВК: https://vk.com/suti_roat';}
-    tex.innerHTML = FIO.value + ', Вы набрали ' + score + ' балл(ов)' + '<br>' + '<br>' + 'Ваша оценка: ' + ball;
+    tex.innerHTML = FIO.value + ', Вы набрали ' + score + ' балл(ов)' + '<br>' + '<br>' + 'Оценка по дисциплине ТБДП: ' + ball;
     block.style.display = 'block';
 
     console.log(score);
