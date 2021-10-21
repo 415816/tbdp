@@ -95,30 +95,10 @@
     const MU2Container = document.querySelector('.MU2-container');
     
     btnCalcStart.onclick = () => {
-      calcSumm.innerHTML = parseFloat(
-        (
-          parseFloat(calcInp[0].value.replace(",", ".")) +
-          parseFloat(calcInp[1].value.replace(",", "."))
-        ).toFixed(12)
-      );
-      calcSubtraction.innerHTML = parseFloat(
-        (
-          parseFloat(calcInp[2].value.replace(",", ".")) -
-          parseFloat(calcInp[3].value.replace(",", "."))
-        ).toFixed(12)
-      );
-      calcMultipl.innerHTML = parseFloat(
-        (
-          parseFloat(calcInp[4].value.replace(",", ".")) *
-          parseFloat(calcInp[5].value.replace(",", "."))
-        ).toFixed(12)
-      );
-      calcDevide.innerHTML = parseFloat(
-        (
-          parseFloat(calcInp[6].value.replace(",", ".")) /
-          parseFloat(calcInp[7].value.replace(",", "."))
-        ).toFixed(12)
-      );
+      calcSumm.innerHTML = parseFloat((parseFloat(calcInp[0].value.replace(",", ".")) + parseFloat(calcInp[1].value.replace(",", "."))).toFixed(12));
+      calcSubtraction.innerHTML = parseFloat((parseFloat(calcInp[2].value.replace(",", ".")) - parseFloat(calcInp[3].value.replace(",", "."))).toFixed(12));
+      calcMultipl.innerHTML = parseFloat((parseFloat(calcInp[4].value.replace(",", ".")) * parseFloat(calcInp[5].value.replace(",", "."))).toFixed(12));
+      calcDevide.innerHTML = parseFloat((parseFloat(calcInp[6].value.replace(",", ".")) / parseFloat(calcInp[7].value.replace(",", "."))).toFixed(12));
     };
 
     showCalculator.onclick = () => {
@@ -145,8 +125,8 @@
     clos.onclick = () => {if (passClos.value == 46) closMess();}   // проверка условий для закрытия всплывающего окна
     trueAns.onclick = () => {if (passAnsw.value == 46) displayTrueAnswers();}
 
-    // 30-минутный таймер
-    let time = 30 * 60;
+    // Якобы 35-минутный таймер
+    let time = 35 * 60;
     let r = document.getElementById('r');
     let tmp = time;
 
@@ -159,7 +139,7 @@
         r.textContent = 'Осталось ' + m + ':' + (s.length > 1 ? '' : '0') + s;
         if(m == 0 && s == 1) check();
         tmp != 0 || (tmp = time);
-    },1000); 
+    },834);
            
     
     
@@ -179,7 +159,6 @@
     q212 = [Math.floor(Math.random() * (4000000 - 50)) + 50];
     q312 = ['незначительный', 'серьезный', 'критический', 'катастрофический'];
     q412 = [`${(Math.random() * (0.9 - 0.1) + 0.1).toFixed(2)}*10<sup>-${Math.floor(Math.random() * (7 - 1)) + 1}</sup>`];
-    //q13 = ['t<sub>1</sub>-t<sub>2</sub>', 't<sub>2</sub>-t<sub>3</sub>', 't<sub>3</sub>-t<sub>4</sub>', 't<sub>4</sub>-t<sub>5</sub>'];
     q14 = ['происходит безопасная эксплуатация объекта инфраструктуры', 'возникает опасный отказ, но его устраняют до момента использования ОИ', 'возникает опасный отказ в процессе использования ОИ', 'возникает опасный отказ и его не успевают устранить', 'процесс движения поезда постоянно находился в опасном состоянии', 'произошел опасный отказ, но поражающие факторы не возникли'];
 
     let s20 = document.querySelector('#s20');
@@ -298,10 +277,6 @@ function check() {
     m = s101.innerHTML[54] - 1;
     
     if (parseFloat(inp10.value.replace(',', '.')).toFixed(9) == (qts[j][m] * qt[i][m]).toFixed(9) && s101.innerHTML[3] == "Q") {score += 3;}
-    /* console.log(qt[i][m]);
-    console.log(qts[j][m]);
-    console.log('QTSOK = ' + (qts[j][m] * qt[i][m]).toFixed(9));
-    console.log(+inp10.value.replace(',', '.')); */
     if (+inp10.value.replace(',', '.') == (1 - (qts[j][m] * qt[i][m]).toFixed(9)) && s101.innerHTML[3] == "P") {score += 3;}
     // проверка правильности ответа на одиннадцатый вопрос:
     z = s110.innerHTML[0];
