@@ -121,9 +121,9 @@
       }
     };                           // кнопка формирования билета (заполняются спаны случайными значениями)                   
     result.onclick = check;                             // запуск функции проверки ответов
-    cheets.onclick = () => {if (passAnsw.value == 46) answers();}   // проверка условий для показа правильных ответов
-    clos.onclick = () => {if (passClos.value == 46) closMess();}   // проверка условий для закрытия всплывающего окна
-    trueAns.onclick = () => {if (passAnsw.value == 46) displayTrueAnswers();}
+    cheets.onclick = () => {if (passAnsw.value == 45) answers();}   // проверка условий для показа правильных ответов
+    clos.onclick = () => {if (passClos.value == 45) closMess();}   // проверка условий для закрытия всплывающего окна
+    trueAns.onclick = () => {if (passAnsw.value == 45) displayTrueAnswers();}
 
     // Якобы 35-минутный таймер
     let time = 35 * 60;
