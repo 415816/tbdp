@@ -143,7 +143,7 @@ trueAns.onclick = () => {
 }
 
 // Якобы 35-минутный таймер
-let time = 35 * 60;
+let time = 30 * 60;
 let r = document.getElementById('r');
 let tmp = time;
 
@@ -156,7 +156,7 @@ function formQuest() {
         r.textContent = 'Осталось ' + m + ':' + (s.length > 1 ? '' : '0') + s;
         if (m == 0 && s == 1) check();
         tmp != 0 || (tmp = time);
-    }, 834);
+    }, 1000);
 
 
     q2 = ['не', ''];                                // в переменных q содержатся массивы данных для подстановки в вопросы (в спаны)
