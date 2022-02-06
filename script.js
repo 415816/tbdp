@@ -97,8 +97,6 @@ const MU1Container = document.querySelector('.MU1-container');
 const MU2Container = document.querySelector('.MU2-container');
 
 
-
-
 let inp1 = document.querySelector('.inp1');                     // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
 let inp2 = document.querySelectorAll('.inp2');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
 let inp3 = document.querySelectorAll('.inp3');                  // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
@@ -112,10 +110,6 @@ let inp10 = document.querySelector('.inp10');                   // в перем
 let inp11 = document.querySelector('.inp11');                   // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
 let inp12 = document.querySelector('.inp12');                    // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
 let inp13 = document.querySelector('.inp13');                    // в переменных берутся инпуты: чек-боксы и поля ввода (введенные ответы)
-
-
-
-
 
 
 btnCalcStart.onclick = () => {
@@ -154,15 +148,16 @@ FIO.addEventListener('keydown', function (e) {
 
 
 result.onclick = check;                             // запуск функции проверки ответов
-cheets.onclick = () => {
-    if (passAnsw.value == 987) answers();
-}   // проверка условий для показа правильных ответов
-clos.onclick = () => {
-    if (passClos.value == 987) closMess();
-}   // проверка условий для закрытия всплывающего окна
-trueAns.onclick = () => {
-    if (passAnsw.value == 987) displayTrueAnswers();
-}
+cheets.onclick = () => {if (passAnsw.value == 987) answers();}   // проверка условий для показа правильных ответов
+clos.onclick = () => {if (passClos.value == 987) closMess();}   // проверка условий для закрытия всплывающего окна
+passClos.addEventListener('keydown', function (e) {
+    if ((e.keyCode === 13) && (passClos.value == 987)) {
+        closMess();
+    }
+})
+
+
+trueAns.onclick = () => {if (passAnsw.value == 987) displayTrueAnswers();}  // выделение неверных ответов
 
 // Якобы 35-минутный таймер
 let time = 30 * 60;
@@ -443,9 +438,7 @@ function check() {
     P2 = (lambda2[z] / (lambda2[z] + mu2[z])).toFixed(6);
     sigma1 = ((lambda1[z] / (1 / Tu[c])) + (lambda2[z] / mu2[z])).toFixed(6);
     tauAO = ((Tu[c] * (k[c] / mu2[z])) / (Tu[c] + (k[c] / mu2[z]))).toFixed(6);
-    /* console.log('sigma1 = ' + sigma1);
-    console.log('P2 = ' + P2);
-    console.log('tauAO = ' + tauAO); */
+
     if (s111.innerHTML[6] == '1' && inp11.value.replace(',', '.') == sigma1) {
         score += 3;
         document.querySelector('.qu11').setAttribute("name", "goodAnswer");
@@ -551,6 +544,11 @@ function check() {
     }
     tex.innerHTML = FIO.value + ', Вы набрали ' + score + ' балл(ов)' + '<br>' + '<br>' + 'Оценка по дисциплине ТБДП: ' + ball;
     block.style.display = 'block';
+    if (score >= 11) {
+        block.style.background = "rgba(33, 189, 1, 0.98)";
+    } else {
+        block.style.background = "rgba(196, 0, 0, 0.98)";
+    }
 
     console.log(score);
 
@@ -736,44 +734,44 @@ function answers() {
 
 // функция выделения правильных ответов
 function displayTrueAnswers() {
-    if (document.querySelector('.qu1').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu1').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu1').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu2').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu2').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu2').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu3').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu3').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu3').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu4').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu4').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu4').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu5').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu5').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu5').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu6').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu6').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu6').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu7').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu7').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu7').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu8').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu8').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu8').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu9').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu9').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu9').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu10').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu10').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu10').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu11').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu11').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu11').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu12').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu12').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu12').classList.toggle('trueAnswer');
     }
-    if (document.querySelector('.qu13').getAttribute("name") !== "goodAnswer"){
+    if (document.querySelector('.qu13').getAttribute("name") !== "goodAnswer") {
         document.querySelector('.qu13').classList.toggle('trueAnswer');
     }
-        passAnsw.value = '';
+    passAnsw.value = '';
 }
