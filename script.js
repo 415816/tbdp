@@ -159,7 +159,7 @@ passClos.addEventListener('keydown', function (e) {
 
 trueAns.onclick = () => {if (passAnsw.value == 987) displayTrueAnswers();}  // выделение неверных ответов
 
-// Якобы 35-минутный таймер
+// 30-минутный таймер
 let time = 30 * 60;
 let r = document.getElementById('r');
 let tmp = time;
@@ -238,8 +238,6 @@ function formQuest() {
 
 // функция проверки правильности ответов
 function check() {
-
-
     score = 0;
     // проверка правильности ответа на первый вопрос:
     if (inp1.value.toUpperCase() == 'КООРДИНАТА' || inp1.value.toUpperCase() == 'МЕСТОПОЛОЖЕНИЕ') {
@@ -250,7 +248,7 @@ function check() {
     // проверка правильности ответа на второй вопрос:
     if (s20.innerHTML == 'не' && inp2[0].checked && inp2[1].checked == false && inp2[2].checked == false && inp2[3].checked == false) {
         score += 1;
-        document.querySelector('.qu1').setAttribute("name", "goodAnswer");
+        document.querySelector('.qu2').setAttribute("name", "goodAnswer");
     }
     if (s20.innerHTML == '' && inp2[0].checked == false && inp2[1].checked && inp2[2].checked && inp2[3].checked) {
         score += 1;
@@ -365,7 +363,7 @@ function check() {
         score += 2;
         document.querySelector('.qu7').setAttribute("name", "goodAnswer");
     }
-    if ((s70.innerHTML == 'полной потере технической системы') && ((inp7.value.toUpperCase() == 'КРИТИЧЕСКИЙ'))) {
+    if ((s70.innerHTML == 'полной потере технической системы') && ((inp7.value.toUpperCase() == 'КРИТИЧЕСКИЙ') || (inp7.value.toUpperCase() == 'КАТАСТРОФИЧЕСКИЙ'))) {
         score += 2;
         document.querySelector('.qu7').setAttribute("name", "goodAnswer");
     }
